@@ -1,0 +1,25 @@
+# CLOUD CONFIG
+#-------------------------------  
+eureka:  
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_URL:http://localhost:9001}/eureka/
+      
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    
+    
+
+server:
+   port: 8001
+   
+#-----------------------------------------
+# GITHUB Config file location
+#-----------------------------------------
+spring:  
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/dipsscor/Cloud-Config-Server 

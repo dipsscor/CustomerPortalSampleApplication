@@ -1,0 +1,82 @@
+# ----------------------------------------
+# GENERIC CORE PROPERTIES
+# PROFILE SPECIFIC IN DEV , QA AND PROD APPLICATION-{PROFILE}.YML FILES 
+# ----------------------------------------
+
+
+# ----------------------------------------
+# CORE PROPERTIES
+# ----------------------------------------
+#LOGGING
+logging:
+  file: logs/application.log
+
+server:
+  port: 10001
+
+# ZUUL CONFIG
+#-------------------------------   
+zuul:
+  prefix: /API
+  routes:  
+    customer-management-service:
+       path: /CUSTOMER-MANAGEMENT/V1.0/**
+       service-id: customer-management-service
+    account-management-service:
+       path: /**
+       service-id: account-management-service
+    customer-account-management-service:
+       path: /CUSTOMER-ACCOUNT-COMPOSITE/V1.0/**
+       service-id: customer-account-management-service
+       
+       
+                  
+# CLOUD CONFIG
+#-------------------------------  
+eureka:  
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_URL:http://localhost:9001}/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+          
+ribbon:
+  eureka:
+    enabled: true
+    
+    
+
+# ----------------------------------------
+# ACTUATOR PROPERTIES
+# ----------------------------------------
+info:
+  component: Zuul Gateway Service App
+  
+endpoints:
+  enabled: true
+  sensitive: false
+  actuator:
+    enabled: true
+  metrics:
+    enabled: true
+    sensitive: false
+  info:
+    enabled: true
+    sensitive: false
+  health:
+    enabled: true
+    sensitive: false
+  auditevents:
+    enabled: false
+  beans:
+    enabled: false
+  docs:
+    enabled: true
+  dump:
+    enabled: false
+management:
+  context-path: /monitoring
+  security:
+    enabled: false
+    

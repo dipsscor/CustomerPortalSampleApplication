@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="ConfigService"/>
+<aop-project name="AccountManagement"/>
+<aop-project name="EmailService"/>
+<aop-project name="CustomerAccountManagement"/>
+<aop-project name="DiscoveryService"/>
+<aop-project name="ZuulGatewayService"/>
+<aop-project name="CustomerManagement"/>
+</aop-reference-model>

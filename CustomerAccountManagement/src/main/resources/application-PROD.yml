@@ -1,0 +1,26 @@
+
+# ----------------------------------------
+# WEB PROPERTIES
+# ----------------------------------------
+# EMBEDDED SERVER CONFIGURATION
+server:
+  port: 13001
+  
+  
+  
+# CLOUD CONFIG
+#-------------------------------  
+eureka:  
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_URL:http://localhost:9001}/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+          
+ribbon:
+  eureka:
+    enabled: true
+  
+  
+  
