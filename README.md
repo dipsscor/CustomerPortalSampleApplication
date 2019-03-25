@@ -28,6 +28,18 @@ http://locahost:9411
 The Spring Cloud Config Service provides the externalization of configurations from github.
 http://locahost:8001
 
+# Zuul Gateway Service
+The Zuul Gateway Service works as the API Gateway for customer portal Management Application
+http://locahost:10001
+  
+    Zuul URL: http://localhost:10001/API/customer-management-service/CUSTOMER-MANAGEMENT/V1.0/CUSTOMER/LIST
+    Zuul URL: http://localhost:10001/API/account-management-service/ACCOUNT-MANAGEMENT/V1.0/ACCOUNT/LIST
+
+
+    Zuul aacount Swagger URL: http://localhost:10001/API/account-management-service/swagger-ui.html#/account-management
+    Zuul customer Swagger URL: http://localhost:10001/API/customer-management-service/swagger-ui.html#
+
+
 
 
 # Order of Execution
@@ -35,3 +47,5 @@ http://locahost:8001
 2.Start Eureka Discovery Service
 3.Start Zipkin Tracing Service
 4.Start rest of the services.
+
+
