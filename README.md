@@ -1,6 +1,8 @@
 # CustomerPortalSampleApplication
 Sample Customer Management Application demonstrating Springboot
 
+JAVA Version = 9 or higher
+
 # Account Management
 The Account Management Service provides the REST APIs for Account Service . The Rest APIs can be accessed using Swagger UI:
 http://locahost:12001/swagger-ui.html
