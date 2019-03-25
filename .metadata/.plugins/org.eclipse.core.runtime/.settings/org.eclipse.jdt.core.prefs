@@ -1,7 +1,0 @@
-eclipse.preferences.version=1
-org.eclipse.jdt.core.classpathVariable.JRE_LIB=D\:/JDK/jdk1.8.0_65/jre/lib/rt.jar
-org.eclipse.jdt.core.classpathVariable.JRE_SRC=D\:/JDK/jdk1.8.0_65/src.zip
-org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=
-org.eclipse.jdt.core.classpathVariable.M2_REPO=D\:/development/tracfone_repository
-org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled
-org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
