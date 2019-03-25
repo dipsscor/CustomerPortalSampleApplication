@@ -7,32 +7,54 @@ JAVA Version = 9 or higher
 The Account Management Service provides the REST APIs for Account Service . The Rest APIs can be accessed using Swagger UI:
 http://locahost:12001/swagger-ui.html
 
+    Docker : 
+      First container: docker run -d --restart=always -p 12001:12001 account-mgmt:latest
+      second container: docker run -d --restart=always -p 12002:12001 account-mgmt:latest
+
 
 # Customer Management
 The Customer Management Service provides the REST APIs for Customer Service . The Rest APIs can be accessed using Swagger UI:
 http://locahost:11001/swagger-ui.html
+
+    Docker : 
+      First container: docker run -d --restart=always -p 11001:11001 cust-mgmt:latest
+      second container: docker run -d --restart=always -p 11002:11001 cust-mgmt:latest
 
 
 # Customer Account Management
 The Customer Account Management Service is a composite that provides the REST APIs for bot Account and Customer Service . The Rest APIs can be accessed using Swagger UI:
 http://locahost:13001/swagger-ui.html
 
+    Docker : 
+       docker run -d --restart=always -p 13001:13001 cust-acct-mgmt:latest
+
 # Eureka Discovery Service
 The Eureka Discovery Service provides the Service Discovery capablities.
 http://locahost:9001
 
+    Docker : 
+       docker run -d --restart=always -p 9001:9001 discovery-service:latest
 
 # Zipkin Tracing Service
 The Zipkin Tracing Service provides the distributed tracing capablities.
 http://locahost:9411
 
+    Docker : 
+       docker run -d --restart=always -p 9411:9411 zipkin-service:latest
+       
 # Spring Cloud Config Service
 The Spring Cloud Config Service provides the externalization of configurations from github.
 http://locahost:8001
 
+    Docker : 
+       docker run -d --restart=always -p 8001:8001 config-service:latest
+
 # Zuul Gateway Service
 The Zuul Gateway Service works as the API Gateway for customer portal Management Application
 http://locahost:10001
+
+    Docker : 
+       docker run -d --restart=always -p 10001:10001 gateway-service:latest
   
     Zuul URL: http://localhost:10001/API/customer-management-service/CUSTOMER-MANAGEMENT/V1.0/CUSTOMER/LIST
     Zuul URL: http://localhost:10001/API/account-management-service/ACCOUNT-MANAGEMENT/V1.0/ACCOUNT/LIST
