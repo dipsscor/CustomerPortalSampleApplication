@@ -1,6 +1,0 @@
-Zuul URL: http://localhost:10001/API/customer-management-service/CUSTOMER-MANAGEMENT/V1.0/CUSTOMER/LIST
-Zuul URL: http://localhost:10001/API/account-management-service/ACCOUNT-MANAGEMENT/V1.0/ACCOUNT/LIST
-
-
-Zuul aacount Swagger URL: http://localhost:10001/API/account-management-service/swagger-ui.html#/account-management
-Zuul customer Swagger URL: http://localhost:10001/API/customer-management-service/swagger-ui.html#
