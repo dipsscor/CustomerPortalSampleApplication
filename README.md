@@ -43,9 +43,12 @@ http://locahost:10001
 
 
 # Order of Execution
-1.Start Spring Cloud Config Service
-2.Start Eureka Discovery Service
-3.Start Zipkin Tracing Service
-4.Start rest of the services.
+   1.Start Spring Cloud Config Service
+   
+   2.Start Eureka Discovery Service
+   
+   3.Start Zipkin Tracing Service
+   
+   4.Start rest of the services.
 
 
