@@ -1,7 +1,7 @@
 # CustomerPortalSampleApplication
 Sample Customer Management Application demonstrating microservices with Springboot, Netflix OSS , Docker and docker-compose.
 
-#Prerequsites:
+# Prerequsites:
 	JAVA Version = 9 or higher
 	Compute : CPU 4
 	Memory : 8GB or higher
