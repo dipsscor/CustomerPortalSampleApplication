@@ -1,0 +1,68 @@
+# ----------------------------------------
+# GENERIC CORE PROPERTIES
+# PROFILE SPECIFIC IN DEV , QA AND PROD APPLICATION-{PROFILE}.YML FILES 
+# ----------------------------------------
+
+
+# ----------------------------------------
+# CORE PROPERTIES
+# ----------------------------------------
+#LOGGING
+logging:
+  file: logs/application.log
+  level:
+    root: warn
+    com.netflix.eureka: debug
+    com.netflix.discovery: debug
+  #SETTING THE LOG PRINTING PATTERN FOR CONSOLE AND FILE
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+    
+    
+
+    
+#-----------------------------------------
+# PROFILES
+#-----------------------------------------
+spring:
+  profiles:
+    active:
+      - PROD
+
+    
+    
+
+
+# ----------------------------------------
+# ACTUATOR PROPERTIES
+# ----------------------------------------
+info:
+  component: Admin Service App
+  
+endpoints:
+  enabled: true
+  sensitive: false
+  actuator:
+    enabled: true
+  metrics:
+    enabled: true
+    sensitive: false
+  info:
+    enabled: true
+    sensitive: false
+  health:
+    enabled: true
+    sensitive: false
+  auditevents:
+    enabled: false
+  beans:
+    enabled: false
+  docs:
+    enabled: true
+  dump:
+    enabled: false
+management:
+  context-path: /monitoring
+  security:
+    enabled: false

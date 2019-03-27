@@ -12,6 +12,18 @@ services:
   restart:
     unless-stopped
     
+
+ AdminService:
+  build: ./AdminService
+  image: admin-service
+  ports:
+   - "8002:8002"
+  tty:
+    true
+  restart:
+    unless-stopped    
+    
+    
  Cloud-Config-Service:
   build: ./ConfigService
   image: config-service

@@ -13,6 +13,7 @@
 	<module>ZuulGatewayService</module>		
 	<module>ConfigService</module>
 	<module>ZipkinService</module>
+	<module>AdminService</module>
 	<module>AccountManagement</module>
 	<module>CustomerManagement</module>
 	<module>CustomerAccountManagement</module>
