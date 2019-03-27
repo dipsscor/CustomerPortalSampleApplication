@@ -1,0 +1,91 @@
+version: '3.3'
+
+services:
+
+ Discovery-Service:
+  build: ./DiscoveryService
+  image: discovery-service
+  ports:
+   - "9001:9001"
+  tty:
+    true
+  restart:
+    unless-stopped
+    
+ Cloud-Config-Service:
+  build: ./ConfigService
+  image: config-service
+  ports:
+   - "8001:8001"
+  environment:
+    - REGISTRY_HOST=Discovery-Service
+  tty:
+    true
+  restart:
+    unless-stopped
+    
+ ZipkinService:
+  build: ./ZipkinService 
+  image: zipkin-service
+  ports:
+   - "9411:9411"
+  environment:
+    - REGISTRY_HOST=Discovery-Service
+  tty:
+    true
+  restart:
+    unless-stopped    
+    
+ Zuul-Gateway-Service:
+  build: ./ZuulGatewayService 
+  image: gateway-service
+  ports:
+   - "10001:10001"
+  environment:
+    - REGISTRY_HOST=Discovery-Service
+  tty:
+    true
+  restart:
+    unless-stopped    
+    
+    
+ account-management-service:
+  build: ./AccountManagement 
+  image: account-mgmt
+  ports:
+   - "12001-12004:12001"
+  environment:
+    - REGISTRY_HOST=Discovery-Service
+  tty:
+    true
+  restart:
+    unless-stopped    
+    
+    
+  
+ customer-management-service:
+  build: ./CustomerManagement 
+  image: cust-mgmt
+  ports:
+   - "11001-11004:11001"
+  environment:
+    - REGISTRY_HOST=Discovery-Service
+  tty:
+    true
+  restart:
+    unless-stopped   
+    
+    
+
+    
+ customer-account-management-service:
+  build: ./CustomerAccountManagement  
+  image: cust-acct-mgmt
+  ports:
+   - "13001:13001"
+  environment:
+    - REGISTRY_HOST=Discovery-Service
+  tty:
+    true
+  restart:
+    unless-stopped                

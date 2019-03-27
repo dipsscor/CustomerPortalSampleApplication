@@ -3,7 +3,7 @@
 eureka:  
   client:
     serviceUrl:
-      defaultZone: ${DISCOVERY_URL:http://localhost:9001}/eureka/
+      defaultZone: http://${registry.host:localhost}:${registry.port:9001}/eureka/
       
   instance:
     leaseRenewalIntervalInSeconds: 1

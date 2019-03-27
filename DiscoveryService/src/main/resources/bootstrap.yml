@@ -1,4 +1,4 @@
 spring:
   application:
-    name: Discovery-Service
+    name: ${springboot.app.name:Discovery-Service}
     

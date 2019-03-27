@@ -1,13 +1,13 @@
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${springboot.app.name:Discovery-Service}
     
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${registry.host:localhost}:${server.port}/eureka/
     
     
 

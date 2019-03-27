@@ -1,6 +1,6 @@
 spring:
   application:
-    name: account-management-service
+    name: ${springboot.app.name:account-management-service}
     
     
   cloud:
