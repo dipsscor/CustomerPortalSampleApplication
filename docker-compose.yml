@@ -18,6 +18,8 @@ services:
   image: admin-service
   ports:
    - "8002:8002"
+  environment:
+    - REGISTRY_HOST=Discovery-Service
   tty:
     true
   restart:
