@@ -62,7 +62,10 @@ The Zuul Gateway Service works as the API Gateway for customer portal Management
     Zuul account Swagger URL: http://localhost:10001/API/account-management-service/swagger-ui.html#/account-management
     Zuul customer Swagger URL: http://localhost:10001/API/customer-management-service/swagger-ui.html#
 
+# Spring Admin Service
+The Spring Admin Service is a community project to manage and monitor your Spring Boot applications.
 
+	http://locahost:8002
 
 
 # Order of Execution
@@ -73,8 +76,10 @@ The Zuul Gateway Service works as the API Gateway for customer portal Management
    3.Zipkin Tracing Service
    
    4.Zuul Gateway Service.
+   
+   5.Spring Admin Service
 
-   5.Rest of Services
+   6.Rest of Services
 
 
 # Docker Compose Intructions
