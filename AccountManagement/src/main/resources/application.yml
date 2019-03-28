@@ -21,17 +21,7 @@ spring:
   profiles:
     active:
       - PROD
-  # ----------------------------------------
-  # GENERIC DATASOURCE PROPERTIES
-  # ----------------------------------------
-  jpa:
-    show-sql: true
-  datasource:
-    tomcat:
-      max-wait: 10000
-      max-active: 50
-      test-on-borrow: true
-      
+     
     
     
 #-----------------------------------------
@@ -48,30 +38,21 @@ config:
 info:
   component: ACCOUNT MANAGEMENT SERVICE
   
-endpoints:
-  enabled: true
-  sensitive: false
-  actuator:
-    enabled: true
-  metrics:
-    enabled: true
-    sensitive: false
-  info:
-    enabled: true
-    sensitive: false
-  health:
-    enabled: true
-    sensitive: false
-  auditevents:
-    enabled: false
-  beans:
-    enabled: false
-  docs:
-    enabled: true
-  dump:
-    enabled: false
 management:
-  context-path: /monitoring
-  security:
-    enabled: false
+  endpoints:
+    enabled-by-default: true
+  server:
+    servlet:
+      context-path: /monitoring
+  endpoint:
+    threaddump:
+      enabled: false
+    metrics:
+      enabled: true
+    info:
+      enabled: true
+    health:
+      enabled: true
+    beans:
+      enabled: false
 
