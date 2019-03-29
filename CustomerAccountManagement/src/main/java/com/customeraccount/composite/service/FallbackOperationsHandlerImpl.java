@@ -18,7 +18,7 @@ public class FallbackOperationsHandlerImpl implements FallbackOperationsHandler{
 		List<Account> accounts = new ArrayList<Account>();
 		Account account = new Account();
 		account.setAccountDisplayId("ACCT10100");
-		account.setAccountName("Tracfone WireLess Inc.");
+		account.setAccountName("Circuit Breaker Fallback Account");
 		account.setCustomerDisplayId("C9010");
 		accounts.add(account);
 			return accounts;
@@ -30,7 +30,7 @@ public class FallbackOperationsHandlerImpl implements FallbackOperationsHandler{
 		List<Customer> customers = new ArrayList<Customer>();
 		
 		Customer customer = new Customer();
-		customer.setCustomerName("Demo Customer");
+		customer.setCustomerName("Demo Customer showing fallback");
 		customers.add(customer);
 		return customers;
 	}
@@ -40,7 +40,7 @@ public class FallbackOperationsHandlerImpl implements FallbackOperationsHandler{
 		List<CustomerAccountBean> customerAccounts = new ArrayList<CustomerAccountBean>();
 		
 		CustomerAccountBean customerAccountBean = new CustomerAccountBean();
-		customerAccountBean.setCustomerName("Demo Customer Account");
+		customerAccountBean.setCustomerName("Demo Customer Account showing fallback");
 		customerAccounts.add(customerAccountBean);
 		return customerAccounts;
 	}

@@ -2,6 +2,8 @@
 # GENERIC CORE PROPERTIES
 # PROFILE SPECIFIC IN DEV , QA AND PROD APPLICATION-{PROFILE}.YML FILES 
 # ----------------------------------------
+
+
 # ----------------------------------------
 # CORE PROPERTIES
 # ----------------------------------------
@@ -19,8 +21,7 @@ spring:
   profiles:
     active:
       - PROD
-
-      
+     
     
     
 #-----------------------------------------
@@ -37,30 +38,20 @@ config:
 info:
   component: Customer Account Management App
   
-endpoints:
-  enabled: true
-  sensitive: false
-  actuator:
-    enabled: true
-  metrics:
-    enabled: true
-    sensitive: false
-  info:
-    enabled: true
-    sensitive: false
-  health:
-    enabled: true
-    sensitive: false
-  auditevents:
-    enabled: false
-  beans:
-    enabled: false
-  docs:
-    enabled: true
-  dump:
-    enabled: false
 management:
-  context-path: /monitoring
-  security:
-    enabled: false
-
+  endpoints:
+    enabled-by-default: true
+  server:
+    servlet:
+      context-path: /monitoring
+  endpoint:
+    threaddump:
+      enabled: false
+    metrics:
+      enabled: true
+    info:
+      enabled: true
+    health:
+      enabled: true
+    beans:
+      enabled: false

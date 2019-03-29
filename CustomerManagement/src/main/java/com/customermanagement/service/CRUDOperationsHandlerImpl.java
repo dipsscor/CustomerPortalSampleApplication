@@ -3,6 +3,7 @@ package com.customermanagement.service;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -214,15 +215,15 @@ public class CRUDOperationsHandlerImpl implements CRUDOperationsHandler {
 
 		try {
 
-			CustomerCategory customerCategory = customerCategoryRepository
-					.findOne(_customerCategoryId);
+			Optional<CustomerCategory> customerCategory = customerCategoryRepository
+					.findById(_customerCategoryId);
 			if (customerCategory == null)
 				throw new Exception("CUSTOMER CATEGORY ID INVALID");
 
-			customerCategoryRepository.delete(customerCategory);
+			customerCategoryRepository.delete(customerCategory.get());
 
 			customerCategoryResponseBean
-					.setCustomerCategoryName(customerCategory
+					.setCustomerCategoryName(customerCategory.get()
 							.getCustomerCategoryName());
 			customerCategoryResponseBean
 					.setMessage("CUSTOMER CATEGORY DELETED SUCCESSFULLY");
@@ -272,14 +273,14 @@ public class CRUDOperationsHandlerImpl implements CRUDOperationsHandler {
 		CustomerTypeResponseBean customerTypeResponseBean = new CustomerTypeResponseBean();
 
 		try {
-			CustomerType customerType = customerTypeRepository
-					.findOne(_customerTypeId);
+			Optional<CustomerType> customerType = customerTypeRepository
+					.findById(_customerTypeId);
 			if (customerType == null)
 				throw new Exception("CUSTOMER TYPE ID INVALID");
 
-			customerTypeRepository.delete(customerType);
+			customerTypeRepository.delete(customerType.get());
 
-			customerTypeResponseBean.setCustomerTypeName(customerType
+			customerTypeResponseBean.setCustomerTypeName(customerType.get()
 					.getCustomerTypeName());
 			customerTypeResponseBean
 					.setMessage("CUSTOMER TYPE DELETED SUCCESSFULLY");
