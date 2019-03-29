@@ -58,10 +58,10 @@ management:
     enabled-by-default: true
   server:
     servlet:
-      context-path: /monitoring
+      context-path: /
   endpoint:
     threaddump:
-      enabled: false
+      enabled: true
     metrics:
       enabled: true
     info:
@@ -69,5 +69,5 @@ management:
     health:
       enabled: true
     beans:
-      enabled: false
+      enabled: true
     

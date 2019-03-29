@@ -12,8 +12,8 @@ logging:
   file: logs/application.log
   level:
     root: warn
-    com.netflix.eureka: debug
-    com.netflix.discovery: debug
+    com.netflix.eureka: error
+    com.netflix.discovery: error
   #SETTING THE LOG PRINTING PATTERN FOR CONSOLE AND FILE
   pattern:
     console: "%d %-5level %logger : %msg%n"
@@ -45,10 +45,10 @@ management:
     enabled-by-default: true
   server:
     servlet:
-      context-path: /monitoring
+      context-path: /
   endpoint:
     threaddump:
-      enabled: false
+      enabled: true
     metrics:
       enabled: true
     info:
@@ -56,4 +56,4 @@ management:
     health:
       enabled: true
     beans:
-      enabled: false
+      enabled: true

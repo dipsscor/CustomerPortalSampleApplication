@@ -9,6 +9,7 @@ target/
 .settings
 .springBeans
 *.log
+*application.log.*
 
 ### IntelliJ IDEA ###
 .idea
@@ -16,6 +17,7 @@ target/
 *.iml
 *.ipr
 *.log
+*application.log.*
 
 ### NetBeans ###
 nbproject/private/
@@ -25,3 +27,4 @@ dist/
 nbdist/
 .nb-gradle/
 *.log
+*application.log.*
