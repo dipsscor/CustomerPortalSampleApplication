@@ -66,6 +66,11 @@ The Zuul Gateway Service works as the API Gateway for customer portal Management
 The Spring Admin Service is a community project to manage and monitor your Spring Boot applications.
 
 	http://locahost:8002
+The Spring Admin Service is integrated with SLACK to send notifications to Webhook:
+https://hooks.slack.com/services/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
+
+
+
 
 
 # Order of Execution
