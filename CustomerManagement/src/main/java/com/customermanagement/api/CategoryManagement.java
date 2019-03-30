@@ -15,6 +15,8 @@ import io.swagger.annotations.ApiResponses;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -73,10 +75,10 @@ public class CategoryManagement {
 			@ApiResponse(code = 403, message = "ACCESS FORBIDDEN"),
 			@ApiResponse(code = 404, message = "RESOURCE NOT FOUND") })
 	@RequestMapping(value = "/CATEGORY/LIST", method = RequestMethod.GET, produces = { "application/json" })
-	public List<CustomerCategory> getAllCustomerCategories() {
+	public ResponseEntity<List<CustomerCategory>> getAllCustomerCategories() {
 		
 		logger.log(Level.INFO, "Service Name:customer-management-service , API Name: getAllCustomerCategories(), Message: Processing Request");
-			return customerManagementProcessor.getQueryOperationsHandler().getAllCustomerCategories();
+			return new ResponseEntity<List<CustomerCategory>>(customerManagementProcessor.getQueryOperationsHandler().getAllCustomerCategories(),HttpStatus.OK);
 	}
 	
 	
@@ -87,14 +89,14 @@ public class CategoryManagement {
 	@ApiOperation(value = "CREATE CUSTOMER CATEGORY")
 	// Swagger Specific Annotation
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
+			@ApiResponse(code = 201, message = "SUCCESSFUL CREATION OPERATION"),
 			@ApiResponse(code = 401, message = "UNAUTHORIZED TO VIEW RESOURCE"),
 			@ApiResponse(code = 403, message = "ACCESS FORBIDDEN"),
 			@ApiResponse(code = 404, message = "RESOURCE NOT FOUND") })
 	@RequestMapping(value = "/CATEGORY/CREATE", method = RequestMethod.POST, produces = { "application/json","application/x-javascript","application/javascript"},consumes = { "application/json","application/x-javascript","application/javascript" })
-	public CustomerCategoryResponseBean createCustomerCategory(@Valid @RequestBody CustomerCategoryRequestBean _request) {
+	public ResponseEntity<CustomerCategoryResponseBean> createCustomerCategory(@Valid @RequestBody CustomerCategoryRequestBean _request) {
 		logger.log(Level.INFO, "Service Name:customer-management-service , API Name: createCustomerCategory(), Message: Processing Request");
-		return customerManagementProcessor.getCrudOperationsHandler().createCustomerCategory(_request);
+		return new ResponseEntity<CustomerCategoryResponseBean>(customerManagementProcessor.getCrudOperationsHandler().createCustomerCategory(_request),HttpStatus.CREATED);
 	}
 	
 	
@@ -111,9 +113,9 @@ public class CategoryManagement {
 			@ApiResponse(code = 403, message = "ACCESS FORBIDDEN"),
 			@ApiResponse(code = 404, message = "RESOURCE NOT FOUND") })
 	@RequestMapping(value = "/CATEGORY/REMOVE", method = RequestMethod.DELETE, produces = { "application/json","application/x-javascript","application/javascript"})
-	public CustomerCategoryResponseBean removeCustomerCategory(	@RequestParam(name="customerCategoryId",required=true) Long _customerCategoryId) {
+	public ResponseEntity<CustomerCategoryResponseBean> removeCustomerCategory(	@RequestParam(name="customerCategoryId",required=true) Long _customerCategoryId) {
 		logger.log(Level.INFO, "Service Name:customer-management-service , API Name: removeCustomerCategory(), Message: Processing Request");
-		return customerManagementProcessor.getCrudOperationsHandler().removeCustomerCategory(_customerCategoryId);
+		return new ResponseEntity<CustomerCategoryResponseBean>(customerManagementProcessor.getCrudOperationsHandler().removeCustomerCategory(_customerCategoryId),HttpStatus.OK);
 	}
 	
 

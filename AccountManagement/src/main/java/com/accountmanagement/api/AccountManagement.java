@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,121 +34,124 @@ import com.accountmanagement.validator.AccountRequestBeanValidator;
 // Swagger Specific Annotations
 @Api(value = "ACCOUNT MANAGEMENT", description = "ACCOUNT MANAGEMENT")
 public class AccountManagement {
-	
+
 	private static final Logger logger = Logger.getLogger(AccountManagement.class.getName());
-	
+
 	@Autowired
 	ApplicationConfigurationLoader CONFIG;
 
 	@Autowired
 	AccountManagementProcessor accountManagementProcessor;
-	
-	
-	
-	//VALIDATOR CONFIGURATIONS
+
+	// VALIDATOR CONFIGURATIONS
 	@Autowired
 	AccountRequestBeanValidator accountRequestBeanValidator;
-	
+
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		binder.addValidators(accountRequestBeanValidator);
 	}
-	
-	
-	
+
 	/**
 	 * @param _request
 	 * @return
 	 */
 	@ApiOperation(value = "LIST ALL ACCOUNTS")
 	// Swagger Specific Annotation
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
 			@ApiResponse(code = 401, message = "UNAUTHORIZED TO VIEW RESOURCE"),
 			@ApiResponse(code = 403, message = "ACCESS FORBIDDEN"),
 			@ApiResponse(code = 404, message = "RESOURCE NOT FOUND") })
 	@RequestMapping(value = "/ACCOUNT/LIST", method = RequestMethod.GET, produces = { "application/json" })
-	public List<Account> getAllAccounts() {
-		logger.log(Level.INFO, "Service Name:account-management-service , API Name: getAllAccounts(), Message: Processing Request");
-			return accountManagementProcessor.getQueryOperationsHandler().getAllAccounts();
+	public ResponseEntity<List<Account>> getAllAccounts() {
+		logger.log(Level.INFO,
+				"Service Name:account-management-service , API Name: getAllAccounts(), Message: Processing Request");
+		return new ResponseEntity<List<Account>>(
+				accountManagementProcessor.getQueryOperationsHandler().getAllAccounts(), HttpStatus.OK);
 	}
-	
-	
+
 	/**
 	 * @param _request
 	 * @return
 	 */
 	@ApiOperation(value = "FIND SPECIFIC ACCOUNT")
 	// Swagger Specific Annotation
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
 			@ApiResponse(code = 401, message = "UNAUTHORIZED TO VIEW RESOURCE"),
 			@ApiResponse(code = 403, message = "ACCESS FORBIDDEN"),
 			@ApiResponse(code = 404, message = "RESOURCE NOT FOUND") })
 	@RequestMapping(value = "/ACCOUNT/FIND", method = RequestMethod.GET, produces = { "application/json" })
-	public Account getAccountByDisplayId(@RequestParam(name="accountDisplayId",required=true) String _accountDisplayId) {
-		
-		logger.log(Level.INFO, "Service Name:account-management-service , API Name: getAccountByDisplayId(), Message: Processing Request");
-			return accountManagementProcessor.getQueryOperationsHandler().getAccountByDisplayId(_accountDisplayId);
+	public ResponseEntity<Account> getAccountByDisplayId(
+			@RequestParam(name = "accountDisplayId", required = true) String _accountDisplayId) {
+
+		logger.log(Level.INFO,
+				"Service Name:account-management-service , API Name: getAccountByDisplayId(), Message: Processing Request");
+		return new ResponseEntity<Account>(
+				accountManagementProcessor.getQueryOperationsHandler().getAccountByDisplayId(_accountDisplayId),
+				HttpStatus.OK);
 	}
-	
+
 	/**
 	 * @param _request
 	 * @return
 	 */
 	@ApiOperation(value = "SEARCH ACCOUNTS")
 	// Swagger Specific Annotation
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
 			@ApiResponse(code = 401, message = "UNAUTHORIZED TO VIEW RESOURCE"),
 			@ApiResponse(code = 403, message = "ACCESS FORBIDDEN"),
 			@ApiResponse(code = 404, message = "RESOURCE NOT FOUND") })
 	@RequestMapping(value = "/ACCOUNT/SEARCH", method = RequestMethod.GET, produces = { "application/json" })
-	public List<Account> getAccountByDisplayId(@RequestParam(name="accountDisplayId",required=false) String _accountDisplayId,
-			@RequestParam(name="customerDisplayId",required=false) String _customerDisplayId) {
-		
-		logger.log(Level.INFO, "Service Name:account-management-service , API Name: searchAccounts(), Message: Processing Request");
-			return accountManagementProcessor.getQueryOperationsHandler().searchAccounts(_accountDisplayId, _customerDisplayId);
+	public ResponseEntity<List<Account>> getAccountByDisplayId(
+			@RequestParam(name = "accountDisplayId", required = false) String _accountDisplayId,
+			@RequestParam(name = "customerDisplayId", required = false) String _customerDisplayId) {
+
+		logger.log(Level.INFO,
+				"Service Name:account-management-service , API Name: searchAccounts(), Message: Processing Request");
+		return new ResponseEntity<List<Account>>(accountManagementProcessor.getQueryOperationsHandler()
+				.searchAccounts(_accountDisplayId, _customerDisplayId), HttpStatus.OK);
 	}
-	
-	
-	
-	
-	
+
 	/**
 	 * @param _request
 	 * @return
 	 */
 	@ApiOperation(value = "CREATE ACCOUNT")
 	// Swagger Specific Annotation
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "SUCCESSFUL RESOURCE CREATION"),
 			@ApiResponse(code = 401, message = "UNAUTHORIZED TO VIEW RESOURCE"),
 			@ApiResponse(code = 403, message = "ACCESS FORBIDDEN"),
 			@ApiResponse(code = 404, message = "RESOURCE NOT FOUND") })
-	@RequestMapping(value = "/ACCOUNT/CREATE", method = RequestMethod.POST, produces = { "application/json","application/x-javascript","application/javascript"},consumes = { "application/json","application/x-javascript","application/javascript" })
-	public AccountResponseBean createAccount(@Valid @RequestBody AccountRequestBean _request) {
-		
-		logger.log(Level.INFO, "Service Name:account-management-service , API Name: createAccount(), Message: Processing Request");		
-			return accountManagementProcessor.getCrudOperationsHandler().createAccount(_request);
+	@RequestMapping(value = "/ACCOUNT/CREATE", method = RequestMethod.POST, produces = { "application/json",
+			"application/x-javascript", "application/javascript" }, consumes = { "application/json",
+					"application/x-javascript", "application/javascript" })
+	public ResponseEntity<AccountResponseBean> createAccount(@Valid @RequestBody AccountRequestBean _request) {
+
+		logger.log(Level.INFO,
+				"Service Name:account-management-service , API Name: createAccount(), Message: Processing Request");
+		return new ResponseEntity<AccountResponseBean>(
+				accountManagementProcessor.getCrudOperationsHandler().createAccount(_request), HttpStatus.CREATED);
 	}
-	
+
 	/**
 	 * @param _request
 	 * @return
 	 */
 	@ApiOperation(value = "REMOVE ACCOUNT")
 	// Swagger Specific Annotation
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
 			@ApiResponse(code = 401, message = "UNAUTHORIZED TO VIEW RESOURCE"),
 			@ApiResponse(code = 403, message = "ACCESS FORBIDDEN"),
 			@ApiResponse(code = 404, message = "RESOURCE NOT FOUND") })
-	@RequestMapping(value = "/ACCOUNT/REMOVE", method = RequestMethod.DELETE, produces = { "application/json","application/x-javascript","application/javascript"})
-	public AccountResponseBean removeAccount(	@RequestParam(name="accountDisplayId",required=true) String _accountDisplayId) {
-		
-		logger.log(Level.INFO, "Service Name:account-management-service , API Name: removeAccount(), Message: Processing Request");		
-		return accountManagementProcessor.getCrudOperationsHandler().removeAccount(_accountDisplayId);
+	@RequestMapping(value = "/ACCOUNT/REMOVE", method = RequestMethod.DELETE, produces = { "application/json",
+			"application/x-javascript", "application/javascript" })
+	public ResponseEntity<AccountResponseBean> removeAccount(
+			@RequestParam(name = "accountDisplayId", required = true) String _accountDisplayId) {
+
+		logger.log(Level.INFO,
+				"Service Name:account-management-service , API Name: removeAccount(), Message: Processing Request");
+		return new ResponseEntity<AccountResponseBean>(
+				accountManagementProcessor.getCrudOperationsHandler().removeAccount(_accountDisplayId), HttpStatus.OK);
 	}
 
 }

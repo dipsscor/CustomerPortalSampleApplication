@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,7 +35,7 @@ import com.customermanagement.validator.CustomerTypeRequestBeanValidator;
 // Swagger Specific Annotations
 @Api(value = "CUSTOMER TYPE MANAGEMENT", description = "CUSTOMER TYPE MANAGEMENT")
 public class CustomerTypeManagement {
-	
+
 	private static final Logger logger = Logger.getLogger(CustomerTypeManagement.class.getName());
 
 	@Autowired
@@ -41,76 +43,81 @@ public class CustomerTypeManagement {
 
 	@Autowired
 	CustomerManagementProcessor customerManagementProcessor;
-	
+
 	@Autowired
 	ResponseBeanConverter responseBeanConverter;
-	
-	
-	//VALIDATOR CONFIGURATIONS
+
+	// VALIDATOR CONFIGURATIONS
 	@Autowired
 	CustomerTypeRequestBeanValidator customerTypeRequestBeanValidator;
-	
+
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		binder.addValidators(customerTypeRequestBeanValidator);
 	}
-	
-	
+
 	/**
 	 * @param _request
 	 * @return
 	 */
 	@ApiOperation(value = "LIST ALL CUSTOMER TYPES")
 	// Swagger Specific Annotation
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
 			@ApiResponse(code = 401, message = "UNAUTHORIZED TO VIEW RESOURCE"),
 			@ApiResponse(code = 403, message = "ACCESS FORBIDDEN"),
 			@ApiResponse(code = 404, message = "RESOURCE NOT FOUND") })
 	@RequestMapping(value = "/CUSTOMER-TYPE/LIST", method = RequestMethod.GET, produces = { "application/json" })
-	public List<CustomerType> getAllCustomerTypes() {
-		
-		logger.log(Level.INFO, "Service Name:customer-management-service , API Name: getAllCustomerTypes(), Message: Processing Request");
-			return customerManagementProcessor.getQueryOperationsHandler().getAllCustomerTypes();
+	public ResponseEntity<List<CustomerType>> getAllCustomerTypes() {
+
+		logger.log(Level.INFO,
+				"Service Name:customer-management-service , API Name: getAllCustomerTypes(), Message: Processing Request");
+		return new ResponseEntity<List<CustomerType>>(
+				customerManagementProcessor.getQueryOperationsHandler().getAllCustomerTypes(), HttpStatus.OK);
 	}
-	
+
 	/**
 	 * @param _request
 	 * @return
 	 */
 	@ApiOperation(value = "CREATE CUSTOMER TYPE")
 	// Swagger Specific Annotation
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "SUCCESSFUL CREATION OPERATION"),
 			@ApiResponse(code = 401, message = "UNAUTHORIZED TO VIEW RESOURCE"),
 			@ApiResponse(code = 403, message = "ACCESS FORBIDDEN"),
 			@ApiResponse(code = 404, message = "RESOURCE NOT FOUND") })
-	@RequestMapping(value = "/CUSTOMER-TYPE/CREATE", method = RequestMethod.POST, produces = { "application/json","application/x-javascript","application/javascript"},consumes = { "application/json","application/x-javascript","application/javascript" })
-	public CustomerTypeResponseBean createCustomerType(@Valid @RequestBody CustomerTypeRequestBean _request) {
-		
-		logger.log(Level.INFO, "Service Name:customer-management-service , API Name: createCustomerType(), Message: Processing Request");
-		return customerManagementProcessor.getCrudOperationsHandler().createCustomerType(_request);
+	@RequestMapping(value = "/CUSTOMER-TYPE/CREATE", method = RequestMethod.POST, produces = { "application/json",
+			"application/x-javascript", "application/javascript" }, consumes = { "application/json",
+					"application/x-javascript", "application/javascript" })
+	public ResponseEntity<CustomerTypeResponseBean> createCustomerType(
+			@Valid @RequestBody CustomerTypeRequestBean _request) {
+
+		logger.log(Level.INFO,
+				"Service Name:customer-management-service , API Name: createCustomerType(), Message: Processing Request");
+		return new ResponseEntity<CustomerTypeResponseBean>(
+				customerManagementProcessor.getCrudOperationsHandler().createCustomerType(_request),
+				HttpStatus.CREATED);
 	}
-	
-	
-	
+
 	/**
 	 * @param _request
 	 * @return
 	 */
 	@ApiOperation(value = "REMOVE CUSTOMER TYPE")
 	// Swagger Specific Annotation
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "SUCCESSFUL OPERATION"),
 			@ApiResponse(code = 401, message = "UNAUTHORIZED TO VIEW RESOURCE"),
 			@ApiResponse(code = 403, message = "ACCESS FORBIDDEN"),
 			@ApiResponse(code = 404, message = "RESOURCE NOT FOUND") })
-	@RequestMapping(value = "/CUSTOMER-TYPE/REMOVE", method = RequestMethod.DELETE, produces = { "application/json","application/x-javascript","application/javascript"})
-	public CustomerTypeResponseBean removeCustomerType(	@RequestParam(name="customerTypeId",required=true) Long _customerTypeId) {
-		
-		logger.log(Level.INFO, "Service Name:customer-management-service , API Name: removeCustomerType(), Message: Processing Request");
-		return customerManagementProcessor.getCrudOperationsHandler().removeCustomerType(_customerTypeId);
+	@RequestMapping(value = "/CUSTOMER-TYPE/REMOVE", method = RequestMethod.DELETE, produces = { "application/json",
+			"application/x-javascript", "application/javascript" })
+	public ResponseEntity<CustomerTypeResponseBean> removeCustomerType(
+			@RequestParam(name = "customerTypeId", required = true) Long _customerTypeId) {
+
+		logger.log(Level.INFO,
+				"Service Name:customer-management-service , API Name: removeCustomerType(), Message: Processing Request");
+		return new ResponseEntity<CustomerTypeResponseBean>(
+				customerManagementProcessor.getCrudOperationsHandler().removeCustomerType(_customerTypeId),
+				HttpStatus.OK);
 	}
-	
 
 }
