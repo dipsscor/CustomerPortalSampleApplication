@@ -6,10 +6,12 @@
 Sample Customer Management Application demonstrating microservices with Springboot, Netflix OSS , Docker and docker-compose.
 
 # Prerequsites:
-	JAVA Version = 9 or higher
+	JAVA Version = 8 or higher
 	Compute : CPU 4
 	Memory : 8GB or higher
 	Docker Enviornment available
+	Travis-ci for CI/CD
+	Sonar.io for Code quality
 
 
 
@@ -95,3 +97,15 @@ https://hooks.slack.com/services/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
   Run as : docker-compose up --scale account-management-service=2 --scale customer-management-service=2
 
 	Here AccountManagementService and CustomerManagementService are started with 2 instances each so that Ribbon loadbalancing can be shown. Both the services have allowable 4 ports configured in Docker compose.
+
+
+# Travis-CI
+Travis-CI is being used for CI/CD.Create a travis-ci account in travis-ci.org and log in through Github. In this project travis-ci.org is being used for public repositories. For private repositories use "travis-ci.com"
+Travis-ci supports pipeline as a code , so you need a .travis.yml in your project for build pipelines. 
+Embed the travis-ci build icon url in the Github repo for linking:
+		[![Build Status](https://travis-ci.org/dipsscor/CustomerPortalSampleApplication.svg?branch=master)](https://travis-ci.org/dipsscor/CustomerPortalSampleApplication)
+
+
+# References
+	# How to Create Slack Webhook:
+	https://api.slack.com/incoming-webhooks
