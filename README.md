@@ -1,4 +1,6 @@
 # CustomerPortalSampleApplication
+[![Build Status](https://travis-ci.com/dipsscor/CustomerPortalSampleApplication.svg?token=hn9PTwdzk4Ss1dqjGjs7&branch=master)](https://travis-ci.com/dipsscor/CustomerPortalSampleApplication)
+
 Sample Customer Management Application demonstrating microservices with Springboot, Netflix OSS , Docker and docker-compose.
 
 # Prerequsites:
