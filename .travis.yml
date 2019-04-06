@@ -1,5 +1,13 @@
 language: java
 jdk:
   - openjdk8
+  
+addons:
+  sonarcloud:
+    organization: "dipsscor"
+    token:
+      secure: b6afc95224a0d63b2aa2b973583cbf712ddae3f2
 
-script: mvn clean install
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
