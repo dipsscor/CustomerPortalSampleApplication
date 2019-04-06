@@ -4,7 +4,7 @@ jdk:
   
 addons:
   sonarcloud:
-    organization: "dipsscor"
+    organization: "dipsscor-github"
     token:
       secure: b6afc95224a0d63b2aa2b973583cbf712ddae3f2
 
