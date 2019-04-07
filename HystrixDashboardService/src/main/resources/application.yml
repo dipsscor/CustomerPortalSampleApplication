@@ -1,0 +1,59 @@
+# ----------------------------------------
+# GENERIC CORE PROPERTIES
+# PROFILE SPECIFIC IN DEV , QA AND PROD APPLICATION-{PROFILE}.YML FILES 
+# ----------------------------------------
+
+
+# ----------------------------------------
+# CORE PROPERTIES
+# ----------------------------------------
+#LOGGING
+logging:
+  file: logs/application.log
+  level:
+    root: warn
+    com.netflix.eureka: info
+    com.netflix.discovery: info
+  #SETTING THE LOG PRINTING PATTERN FOR CONSOLE AND FILE
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+    
+    
+
+    
+#-----------------------------------------
+# PROFILES
+#-----------------------------------------
+spring:
+  profiles:
+    active:
+      - PROD
+
+    
+    
+
+
+# ----------------------------------------
+# ACTUATOR PROPERTIES
+# ----------------------------------------
+info:
+  component: Hystrix Dashboard Service App
+  
+management:
+  endpoints:
+    enabled-by-default: true
+  server:
+    servlet:
+      context-path: /
+  endpoint:
+    threaddump:
+      enabled: true
+    metrics:
+      enabled: true
+    info:
+      enabled: true
+    health:
+      enabled: true
+    beans:
+      enabled: true
