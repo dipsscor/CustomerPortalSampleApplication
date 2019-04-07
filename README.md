@@ -1,17 +1,18 @@
 # CustomerPortalSampleApplication
 
+Sample Customer Management Application demonstrating microservices with Springboot, Netflix OSS , Docker and docker-compose.
+
+License : [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 ### Using Travis-Ci build:
 [![Build Status](https://travis-ci.org/dipsscor/CustomerPortalSampleApplication.svg?branch=master)](https://travis-ci.org/dipsscor/CustomerPortalSampleApplication)
 
 
 ### Using SonarCloud Coverage:
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=com.customerPortalApp%3AcustomerPortalApp)](https://sonarcloud.io/dashboard?id=com.customerPortalApp%3AcustomerPortalApp)
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg)](https://sonarcloud.io/dashboard?id=com.customerPortalApp%3AcustomerPortalApp)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.customerPortalApp%3AcustomerPortalApp&metric=coverage)](https://sonarcloud.io/dashboard?id=com.customerPortalApp%3AcustomerPortalApp)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.customerPortalApp%3AcustomerPortalApp&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.customerPortalApp%3AcustomerPortalApp)
 
-
-Sample Customer Management Application demonstrating microservices with Springboot, Netflix OSS , Docker and docker-compose.
 
 # Prerequsites:
 	JAVA Version = 8 or higher
