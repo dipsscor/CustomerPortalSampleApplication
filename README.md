@@ -22,7 +22,8 @@ License : [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg
 	Travis-ci for CI/CD
 	Sonar.io for Code quality
 
-
+# Architecture
+![alt text](https://github.com/dipsscor/CustomerPortalSampleApplication/blob/master/Architecture.drawio)
 
 # Account Management
 The Account Management Service provides the REST APIs for Account Service . The Rest APIs can be accessed using Swagger UI based on number of instances launched in docker-compose:
