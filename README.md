@@ -62,7 +62,9 @@ The Zipkin Tracing Service provides the distributed tracing capablities.
 The Spring Cloud Config Service provides the externalization of configurations from github.
 
 	http://locahost:8001
-
+	
+Configurations are stored in :
+	https://github.com/dipsscor/CustomerPortalSampleApplication-Repos.git
 
 # Zuul Gateway Service
 The Zuul Gateway Service works as the API Gateway for customer portal Management Application
