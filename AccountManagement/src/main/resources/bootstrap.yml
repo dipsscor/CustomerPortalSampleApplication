@@ -5,6 +5,7 @@ spring:
       - http://localhost:8001
   application:
     name: ${springboot.app.name:account-management-service}
+
     
 
 management:
