@@ -185,8 +185,18 @@ Spring Boot includes a number of additional features to help you monitor and man
 
 
 ### Exposed Endpoints for Customer Portal Sample Application
-	
 
+|Metric| Description|
+|------|------------|
+|/configprops|Displays a collated list of all @ConfigurationProperties.|
+|/env|Exposes properties from Spring’s ConfigurableEnvironment.|
+|/health|Shows application health information.|
+|/info| Shows the application Name.|
+|/metrics|Shows ‘metrics’ information for the current application.|
+
+### Access the endpoints
+	http://<host>:<port>/actuator/<property
+	e.g. http://localhost:11001/actuator/health
 
 
 
