@@ -1,3 +1,7 @@
 spring:
+  cloud:
+    config:
+      uri:
+      - http://localhost:8001
   application:
     name: ${springboot.app.name:customer-account-management-service}
