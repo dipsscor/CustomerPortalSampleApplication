@@ -10,17 +10,13 @@
 #LOGGING
 logging:
   file: logs/application.log
-    
-    
+
 
     
-#-----------------------------------------
-# PROFILES
-#-----------------------------------------
 spring:
   profiles:
     active:
-      - PROD
+      - PROD 
      
     
     

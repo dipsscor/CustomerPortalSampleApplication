@@ -25,21 +25,3 @@ spring:
         git:
           uri: https://github.com/dipsscor/CustomerPortalSampleApplication-Repos
           skipSslValidation: true
-          repos:
-            DEV:
-              pattern: 
-                - '*/DEV'
-                - '*/QA'
-              uri: https://github.com/dipsscor/CustomerPortalSampleApplication-Repos/DEV
-            QA:
-              pattern: 
-                - '*/QA'
-              uri: https://github.com/dipsscor/CustomerPortalSampleApplication-Repos/QA
-            PROD:
-              pattern: 
-                - '*/PROD'
-              uri: https://github.com/dipsscor/CustomerPortalSampleApplication-Repos/PROD
-            LOCAL:
-              pattern:
-                - '*/LOCAL'
-              uri: https://github.com/dipsscor/CustomerPortalSampleApplication-Repos/DEV

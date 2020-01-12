@@ -6,7 +6,7 @@ spring:
   application:
     name: ${springboot.app.name:account-management-service}
 
-    
+
 
 management:
   security:
