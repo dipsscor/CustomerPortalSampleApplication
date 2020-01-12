@@ -33,10 +33,19 @@ info:
 management:
   endpoints:
     enabled-by-default: true
+    web:
+      exposure:
+        include: info,health,metrics,env,httptrace,configprops
   server:
     servlet:
       context-path: /
   endpoint:
+    configprops:
+      enabled: true
+    httptrace:
+      enabled: true
+    env:
+      enabled: true
     threaddump:
       enabled: true
     metrics:

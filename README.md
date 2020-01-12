@@ -180,9 +180,12 @@ Embed the travis-ci build icon url in the Github repo for linking:
 
 
 
+# Telemetry 
+Spring Boot includes a number of additional features to help you monitor and manage your application when you push it to production. You can choose to manage and monitor your application by using HTTP endpoints or with JMX. Auditing, health, and metrics gathering can also be automatically applied to your application.The "spring-boot-actuator" module provides all of Spring Boot’s production-ready features. 
 
 
-
+### Exposed Endpoints for Customer Portal Sample Application
+	
 
 
 
