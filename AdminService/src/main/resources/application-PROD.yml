@@ -20,7 +20,7 @@ spring.boot.admin.routes.endpoints: env,metrics,dump,jolokia,info,configprops,tr
 # Configure Slack Notification
 spring.boot.admin.notify.slack.enabled: true
 spring.boot.admin.notify.slack.ignore-changes: "UNKNOWN:TEST" #By Default admin ignores changes "UNKNOWN:UP"
-spring.boot.admin.notify.slack.webhook-url: https://hooks.slack.com/services/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
+spring.boot.admin.notify.slack.webhook-url: https://hooks.slack.com/services/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
 spring.boot.admin.notify.slack.message: "*#{instance.registration.name}* (#{instance.id}) is *#{event.statusInfo.status}*"
 
 
