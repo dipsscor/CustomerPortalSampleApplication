@@ -7,6 +7,8 @@ services:
   image: discovery-service
   ports:
    - "9001:9001"
+  networks:
+   - cust-portal
   tty:
     true
   restart:
@@ -18,6 +20,8 @@ services:
   image: admin-service
   ports:
    - "8002:8002"
+  networks:
+   - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
   tty:
@@ -31,6 +35,8 @@ services:
   image: config-service
   ports:
    - "8001:8001"
+  networks:
+   - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
   tty:
@@ -43,6 +49,8 @@ services:
   image: zipkin-service
   ports:
    - "9411:9411"
+  networks:
+   - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
   tty:
@@ -55,6 +63,23 @@ services:
   image: gateway-service
   ports:
    - "10001:10001"
+  networks:
+   - cust-portal
+  environment:
+    - REGISTRY_HOST=Discovery-Service
+  tty:
+    true
+  restart:
+    unless-stopped    
+  
+  
+ HystrixDashboardService:
+  build: ./HystrixDashboardService
+  image: hystrix-dashboard-service
+  ports:
+   - "9090:9090"
+  networks:
+   - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
   tty:
@@ -68,6 +93,8 @@ services:
   image: account-mgmt
   ports:
    - "12001-12004:12001"
+  networks:
+   - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
   tty:
@@ -82,6 +109,8 @@ services:
   image: cust-mgmt
   ports:
    - "11001-11004:11001"
+  networks:
+   - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
   tty:
@@ -97,9 +126,16 @@ services:
   image: cust-acct-mgmt
   ports:
    - "13001:13001"
+  networks:
+   - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
   tty:
     true
   restart:
-    unless-stopped                
+    unless-stopped
+    
+    
+networks:
+  cust-portal:
+    driver: bridge

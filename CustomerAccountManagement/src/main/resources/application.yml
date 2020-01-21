@@ -43,7 +43,7 @@ management:
     enabled-by-default: true
     web:
       exposure:
-        include: info,health,metrics,env,httptrace,configprops
+        include: '*'
   server:
     servlet:
       context-path: /
@@ -64,3 +64,7 @@ management:
       enabled: true
     beans:
       enabled: true
+    hystrix:
+      stream:
+        enabled: true
+       

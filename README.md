@@ -21,6 +21,7 @@ License : [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg
 	Docker Enviornment available
 	Travis-ci for CI/CD
 	Sonar.io for Code quality
+    Docker enviornment with cache clear - network , volumes , images , containers.
 
 # Architecture:
 ![alt text](https://github.com/dipsscor/CustomerPortalSampleApplication/blob/master/Architecture.png)
@@ -88,10 +89,29 @@ The Spring Admin Service is integrated with SLACK to send notifications to Webho
 Slack Webhook link mentioned in Admin Service - application.yml file and application.properties.
 
 
+# Hystrix Circuit breaker Dashboard Service
+The Hystrix Dashboard Service allows to monitor the Hystrix Streams from applications.
+In CustomerPortalSampleApplication Hystrix Circuit breaker has been configured for "Customer Account Management" Service. The hystrix streams flows from the "Customer Account Management" to Hystrix Dashboard Service when configured the URL. 
+
+### Hystrix Stream URL for "Customer Account Management":
+
+    http://localhost:13001/actuator/hystrix.stream
+
+### Hystrix Dashboard 
+Service needs to be configured with the above URL to monitor with Docker host instead of localhost.
+
+Hystrix Dashboard Service URL: 
+
+    http://localhost:9090/hystrix
+
 
 
 
 # Order of Execution
+
+   ## prequisites of execution
+   If you are using docker desktop , clear all the unused images , networks , volumes etc in docker engine.
+   
    1.Spring Cloud Config Service
    
    2.Eureka Discovery Service
@@ -102,7 +122,9 @@ Slack Webhook link mentioned in Admin Service - application.yml file and applica
    
    5.Spring Admin Service
 
-   6.Rest of Services
+   6.Hystrix Dashboard Service
+   
+   7.Rest of Services
 
 
 # Docker Compose Intructions
