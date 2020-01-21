@@ -85,7 +85,7 @@ The Spring Admin Service is a community project to manage and monitor your Sprin
 
 	http://locahost:8002
 The Spring Admin Service is integrated with SLACK to send notifications to Webhook:
-Slack Webhook link mentioned in Admin Service - application.yml file.
+Slack Webhook link mentioned in Admin Service - application.yml file and application.properties.
 
 
 
