@@ -2,7 +2,7 @@ spring:
   cloud:
     config:
       uri:
-      - http://localhost:8001
+       - http://${cloud.config.host:localhost}:${cloud.config.port:8001}
   application:
     name: ${springboot.app.name:account-management-service}
 

@@ -98,7 +98,9 @@ In CustomerPortalSampleApplication Hystrix Circuit breaker has been configured f
     http://localhost:13001/actuator/hystrix.stream
 
 ### Hystrix Dashboard 
-Service needs to be configured with the above URL to monitor with Docker host instead of localhost.
+Service needs to be configured with the above URL to monitor with Service name instead of localhost.
+
+    URL : http://customer-account-management-service:13001/actuator/hystrix.stream
 
 Hystrix Dashboard Service URL: 
 

@@ -9,6 +9,8 @@ services:
    - "9001:9001"
   networks:
    - cust-portal
+  environment:
+    - CLOUD_CONFIG_HOST=Cloud-Config-Service
   tty:
     true
   restart:
@@ -24,6 +26,7 @@ services:
    - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
+    - CLOUD_CONFIG_HOST=Cloud-Config-Service
   tty:
     true
   restart:
@@ -53,6 +56,7 @@ services:
    - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
+    - CLOUD_CONFIG_HOST=Cloud-Config-Service
   tty:
     true
   restart:
@@ -67,6 +71,7 @@ services:
    - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
+    - CLOUD_CONFIG_HOST=Cloud-Config-Service
   tty:
     true
   restart:
@@ -82,6 +87,7 @@ services:
    - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
+    - CLOUD_CONFIG_HOST=Cloud-Config-Service
   tty:
     true
   restart:
@@ -97,6 +103,8 @@ services:
    - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
+    - CLOUD_CONFIG_HOST=Cloud-Config-Service
+    - ZIPKIN_HOST=ZipkinService
   tty:
     true
   restart:
@@ -113,6 +121,8 @@ services:
    - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
+    - CLOUD_CONFIG_HOST=Cloud-Config-Service
+    - ZIPKIN_HOST=ZipkinService
   tty:
     true
   restart:
@@ -130,6 +140,8 @@ services:
    - cust-portal
   environment:
     - REGISTRY_HOST=Discovery-Service
+    - CLOUD_CONFIG_HOST=Cloud-Config-Service
+    - ZIPKIN_HOST=ZipkinService
   tty:
     true
   restart:
